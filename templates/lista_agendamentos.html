@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Agenda</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="d-flex order-lg-1 me-3">
+                <form class="d-flex" method="GET" action="{{ url_for('buscar') }}">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
+                </form>
+            </div>
+
+            <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('clientes') }}">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('agendar') }}">Novo Agendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('lista_agendamentos') }}">Agendamentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('suporte') }}">Suporte</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('treinamento') }}">Treinamento</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="{{ url_for('logout') }}">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Agendamentos</h2>
+        <div class="card shadow p-4">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Título</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for agendamento in agendamentos %}
+                        <tr>
+                            <td>{{ agendamento.cliente_nome or '—' }}</td>
+                            <td>{{ agendamento.titulo }}</td>
+                            <td>{{ agendamento.data }}</td>
+                            <td>{{ agendamento.hora }}</td>
+                            <td>{{ agendamento.descricao }}</td>
+                            <td>
+                                <a href="{{ url_for('editar_agendamento', id=agendamento.id) }}" 
+                                   class="btn btn-sm btn-primary me-2">Editar</a>
+                                <a href="{{ url_for('deletar_agendamento', id=agendamento.id) }}" 
+                                   class="btn btn-sm btn-danger"
+                                   onclick="return confirm('Tem certeza que deseja deletar este agendamento?');">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

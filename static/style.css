@@ -1,0 +1,132 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.card {
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+h1, h2, h3 {
+    color: #6f42c1;
+    margin-bottom: 20px;
+}
+
+form label {
+    font-weight: 500;
+    color: #333333;
+}
+
+.form-control, .form-select, textarea {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 5px rgba(111,66,193,0.3);
+    outline: none;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: #6f42c1;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5a36a3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.table {
+    background-color: #000000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.table th {
+    background-color: #6f42c1;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.table td, .table th {
+    padding: 12px 15px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+.table .btn {
+    margin-right: 10px;
+}
+td .btn {
+    display: inline-block; 
+    margin-right: 8px;    
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .form-control, .form-select, textarea {
+        font-size: 0.95rem;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.4rem;
+    }
+}
+
+.btn-sm {
+    padding: 5px 12px;
+    font-size: 0.9rem;
+}
+
+.card-list {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show {
+    color: #adb5bd; 
+    font-weight: ;
+}
